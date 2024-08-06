@@ -82,25 +82,22 @@ function checkDigit() {
     // const caret = input_field.value.length;
     // input_field.style.setProperty('--caret-position', caret);
 
-    // setTimeout(function(){
-        const currentDigit_field = document.getElementById('digitCurrent');
+    const currentDigit_field = document.getElementById('digitCurrent');
+    const input = document.getElementById('digitCurrent').value;
     
-        const input = document.getElementById('digitCurrent').value;
-        
-        console.log(predigitValues)
-        if (input === pi[currentIndex]) {
-            predigitValues.shift();
-            predigitValues.push(input);
-            currentDigit_field.value = ""
-            currentIndex++
-        } else {
-            currentDigit_field.value = ""
-            lives--;
-        }
-        updateDisplayedDigits()
-        updateHearts();
-        updateScore();
-    // }, 50);
+    console.log(predigitValues)
+    if (input === pi[currentIndex]) {
+        predigitValues.shift();
+        predigitValues.push(input);
+        currentDigit_field.value = ""
+        currentIndex++
+    } else {
+        currentDigit_field.value = ""
+        lives--;
+    }
+    updateDisplayedDigits()
+    updateHearts();
+    updateScore();
     
 }
 

@@ -53,7 +53,7 @@ body {
 }
 
 .header {
-    display: flex;
+    display: contents;
     flex-direction: column;
 }
 
@@ -72,6 +72,14 @@ body {
     left: 0;
     margin: 5px;
     align-items: flex-end
+}
+
+#logo {
+    position: fixed;
+    top: 0px;
+    margin: 5px;
+    align-items: flex-end;
+    width:150px;
 }
 
 .help-settings {
@@ -140,3 +148,4 @@ body {
     font-size: 1.5em;
     margin-top: 10px;
 }
+
