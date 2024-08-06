@@ -117,6 +117,7 @@ body {
 } */
 
 .game-area {
+    margin-bottom:10vw;
     align-items: flex-end;
 }
 
@@ -178,3 +179,35 @@ body {
     cursor: pointer;
 }
 
+
+.footer {
+    /* background-color: #333; */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.footer a {
+    color: #6a7791;
+    font-family: "Roboto Mono";
+    text-decoration: none;
+    /* margin: 10px; */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
