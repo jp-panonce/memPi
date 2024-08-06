@@ -7,6 +7,7 @@ let currentIndex = 0;
 let lives = 3;
 const max_lives = 3;
 const goal = 100;
+let showingOverlay = false;
 const lives_container = document.getElementById('lives-container');const score_label = document.getElementById('livesCount');
 const goal_label = document.getElementById('goalLabel');
 const input_field = document.getElementById('digitCurrent')
@@ -87,25 +88,34 @@ function checkDigit() {
     // const caret = input_field.value.length;
     // input_field.style.setProperty('--caret-position', caret);
 
-    const currentDigit_field = document.getElementById('digitCurrent');
-    const input = document.getElementById('digitCurrent').value;
-    
-    console.log(predigitValues)
-    if (input === pi[currentIndex]) {
-        predigitValues.shift();
-        predigitValues.push(input);
-        currentDigit_field.value = ""
-        currentIndex++
-    } else {
-        currentDigit_field.value = ""
-        lives--;
+    if (!showingOverlay) {
+
+        
+        const currentDigit_field = document.getElementById('digitCurrent');
+        const input = document.getElementById('digitCurrent').value;
+        
+        console.log(predigitValues)
+        if (input === pi[currentIndex]) {
+            predigitValues.shift();
+            predigitValues.push(input);
+            currentDigit_field.value = ""
+            currentIndex++
+        } else {
+            currentDigit_field.value = ""
+            lives--;
+        }
+        updateDisplayedDigits()
+        updateHearts();
+        updateScore();
     }
-    updateDisplayedDigits()
-    updateHearts();
-    updateScore();
+
 
     if (lives==0) {
         showGameOver();
+    } else if (currentIndex == goal){
+        showFinished();
+    } else {
+        
     }
     
 }
@@ -114,12 +124,26 @@ function checkDigit() {
 
 function showGameOver() {
     document.getElementById('game-over-overlay').style.display = 'flex';
-    document.getElementById("final_score").innerHTML = "Digits: " + currentIndex
+    document.getElementById("final_score-over").innerHTML = "Digits: " + currentIndex
+    input_field.disabled = true;
+    showingOverlay = true;
+}
+
+function showFinished() {
+    document.getElementById('finished-overlay').style.display = 'flex';
+    document.getElementById("final_score-finished").innerHTML = "Digits: " + currentIndex;
+    document.getElementById("total_time-finished").innerHTML = "Total Time: 00:00";
+    document.getElementById("mistakes-finished").innerHTML = "Mistakes: " + (max_lives - lives);
+    input_field.disabled = true;
+    showingOverlay = true;
 }
 
 function restartGame() {
     document.getElementById('game-over-overlay').style.display = 'none';
+    document.getElementById('finished-overlay').style.display = 'none';
     lives = max_lives
     currentIndex = 0
+    showingOverlay = false
+    input_field.disabled = false;
     initialize_ui()
 }
