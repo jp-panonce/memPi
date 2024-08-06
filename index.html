@@ -36,12 +36,21 @@
         <span class="digit postdigit" style="--digit-increment: 0vw;"></span>
 
     </div>
-
     <div id = "game-over-overlay" class="overlay">
         <div class="overlay-content">
             <h1 style="color:#d31e1e; size:5vw">Game Over!!</h1>
-            <h3 id="final_score">Digits:</h3>
-            <p>You run out of lives</p>
+            <h3 id="game-over-message">You run out of lives</h3>
+            <p id="final_score-over">Digits:</p>
+            
+            <button onclick="restartGame()">Try Again</button>
+        </div>
+    </div>
+    <div id = "finished-overlay" class="overlay">
+        <div class="overlay-content">
+            <h1 style="color:#1ed397; size:5vw">Amazing!!!</h1>
+            <h3 id="final_score-finished">Digits:</h3>
+            <h5 id="total_time-finished">Total Time:</h5>
+            <h5 id="mistakes-finished">Mistakes:</h5>
             <button onclick="restartGame()">Try Again</button>
         </div>
     </div>
