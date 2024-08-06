@@ -11,8 +11,9 @@ const lives_container = document.getElementById('lives-container');const score_l
 const goal_label = document.getElementById('goalLabel');
 const input_field = document.getElementById('digitCurrent')
 
-let predigitValues = ["","","","","3."];
-let postdigitValues = ["...","","","",""];
+
+let predigitValues = [];
+let postdigitValues = [];
 
 // updateDisplayedDigits()
 window.onload = initialize_ui;
@@ -20,8 +21,8 @@ window.onload = initialize_ui;
 input_field.addEventListener('input', checkDigit);
 
 function updateHearts(){
-    
     const livesElements = document.querySelectorAll(".life");
+    
     livesElements.forEach((life_img, index) => {
         console.log(index)
         if (index < lives) {
@@ -34,28 +35,32 @@ function updateHearts(){
 }
 
 function updateScore(){
-    score_label.innerHTML = (currentIndex + 1)
+    score_label.innerHTML = (currentIndex)
     goal_label.innerHTML = "/" + goal
 }
 function initialize_ui(){
+    predigitValues = ["","","","","3."];
+    postdigitValues = ["...","","","",""];
     updateDisplayedDigits();
     updateScore();
 
-    // set hearts elements
-    
-
-    for (let i = 1; i <= max_lives; i++){
-        const img = document.createElement('img');
-        img.src = 'heart.svg'; // Replace with your actual SVG filename
-        img.alt = 'SVG Image'; // Set an appropriate alt text
-        
-        if (i<= lives) {
-            img.className = "life-alive life";
-        } else {
-            img.className = "life-dead life"
+    const livesElements = document.querySelectorAll(".life");
+    if (livesElements.length == 0) {
+        // set hearts elements
+        for (let i = 1; i <= max_lives; i++){
+            const img = document.createElement('img');
+            img.src = 'heart.svg'; // Replace with your actual SVG filename
+            img.alt = 'SVG Image'; // Set an appropriate alt text
+            
+            if (i<= lives) {
+                img.className = "life-alive life";
+            } else {
+                img.className = "life-dead life"
+            }
+            lives_container.appendChild(img);
         }
-        lives_container.appendChild(img);
     }
+    
 
 }
 
@@ -67,7 +72,7 @@ function updateDisplayedDigits(){
     if (!gameMode) {
         console.log("ey")
         postdigitValues.forEach((postDigit, index) => {
-            postdigitValues[index] = pi[currentIndex + index + 1];
+            postdigitValues[index] = pi[currentIndex + index];
         });
         console.log(postdigitValues)
     }
@@ -98,6 +103,23 @@ function checkDigit() {
     updateDisplayedDigits()
     updateHearts();
     updateScore();
+
+    if (lives==0) {
+        showGameOver();
+    }
     
 }
 
+
+
+function showGameOver() {
+    document.getElementById('game-over-overlay').style.display = 'flex';
+    document.getElementById("final_score").innerHTML = "Digits: " + currentIndex
+}
+
+function restartGame() {
+    document.getElementById('game-over-overlay').style.display = 'none';
+    lives = max_lives
+    currentIndex = 0
+    initialize_ui()
+}

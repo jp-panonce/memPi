@@ -27,14 +27,23 @@
         <span class="digit" style="--digit-increment: 4vw;"></span>
         <span class="digit" style="--digit-increment: 6vw;"></span>
         <span class="digit" style="--digit-increment: 8vw;">3.</span>
-        <input type="text" class="digitInput" id ="digitCurrent" maxlength="1" autofocus>
-        <span class="digit" style="--digit-increment: 8vw;"></span>
-        <span class="digit" style="--digit-increment: 6vw;"></span>
-        <span class="digit" style="--digit-increment: 4vw;">...</span>
-        <span class="digit" style="--digit-increment: 2vw;"></span>
-        <span class="digit" style="--digit-increment: 0vw;"></span>
-        <span class="digit" style="--digit-increment: 0vw;"></span>
+        <input type="text" class="digitInput" id ="digitCurrent" maxlength="1" placeholder="?" autofocus>
+        <span class="digit postdigit" style="--digit-increment: 8vw;"></span>
+        <span class="digit postdigit" style="--digit-increment: 6vw;"></span>
+        <span class="digit postdigit" style="--digit-increment: 4vw;">...</span>
+        <span class="digit postdigit" style="--digit-increment: 2vw;"></span>
+        <span class="digit postdigit" style="--digit-increment: 0vw;"></span>
+        <span class="digit postdigit" style="--digit-increment: 0vw;"></span>
 
+    </div>
+
+    <div id = "game-over-overlay" class="overlay">
+        <div class="overlay-content">
+            <h1 style="color:#d31e1e; size:5vw">Game Over!!</h1>
+            <h3 id="final_score">Digits:</h3>
+            <p>You run out of lives</p>
+            <button onclick="restartGame()">Try Again</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

@@ -18,38 +18,29 @@ body {
 
 
 ::placeholder { /* Edge 12 -18 */
-    color: rgb(212, 212, 212);
+    color: rgb(231, 231, 231);
   }
 
 .digitInput {
-    font-size: 15vw;
+    font-size: 12vw;
     border: none;
     text-align: center;
-    width: 5vw;
+    width: 12vw;
     /* border-bottom: 3px solid #000; */
     text-align: center; /* Center the digit horizontally */
     background-color: transparent;
     outline:none;
     caret-color: transparent;
+    border-bottom: 10px solid rgb(20, 20, 20); 
+}
 
+.postdigit {
+    color: rgb(214, 214, 214);
 }
 
 #digitCurrent {
     caret-color: transparent; /* Hide the default caret */
     position: relative;
-}
-
-/* #digitCurrent::after {
-    content: '_';
-    position: absolute;
-    right: 0;
-    animation: blink 1s step-end infinite;
-} */
-
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
 }
 
 .header {
@@ -121,9 +112,9 @@ body {
     filter: invert(75%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(96%) contrast(91%);
 }
 
-.digitInput:focus {
-    border-bottom: 2px solid #00f; /* Change border color when focused */
-}
+/* .digitInput:focus {
+    border-bottom: 2px solid #00f; 
+} */
 
 .game-area {
     align-items: flex-end;
@@ -134,9 +125,12 @@ body {
     margin-right: 2px; /* Add spacing between digits */
     /* vertical-align: text-bottom; */
     line-height: 0;
-    color: rgb(199, 199, 199);
+    
 }
 
+.digit:not(.postdigit){
+    color: rgb(199, 199, 199);
+}
 
 
 #result {
@@ -149,3 +143,33 @@ body {
     margin-top: 10px;
 }
 
+
+
+
+/**/
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(39, 39, 39, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2em;
+    display: none; 
+}
+
+.overlay-content {
+    text-align: center;
+}
+
+.overlay button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
