@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* input {
+    font-size: 15vw;
+    text-align: center;
+    width: 15vw;
+} */
+
+.digitInput {
+    font-size: 15vw;
+    border: none;
+    text-align: center;
+    width: 10vw;
+    border-bottom: 3px solid #000; /* Set the bottom border */
+    text-align: center; /* Center the digit horizontally */
+    background-color: transparent;
+    outline:none;
+}
+
+.digitInput:focus {
+    border-bottom: 2px solid #00f; /* Change border color when focused */
+}
+
+.game-area {
+    align-items: flex-end;
+}
+
+.digit {
+    font-size: calc(16px + var(--digit-increment)); /* Adjust the base font size as needed */
+    margin-right: 2px; /* Add spacing between digits */
+    /* vertical-align: text-bottom; */
+    line-height: 0;
+    color: rgb(199, 199, 199);
+}
+
+
+
+#result {
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+#piDigits {
+    font-size: 1.5em;
+    margin-top: 10px;
+}

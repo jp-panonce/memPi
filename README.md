@@ -1,2 +1,2 @@
 # memPi
-a webpage to assist and test your ability to memorize the digits of Pi
+a web application to assist you in memorizing the digits of Pi
