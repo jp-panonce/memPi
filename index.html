@@ -3,12 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi Memorization Test</title>
+    <title>MemPi</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="header">
-        
+        <div class = "livesContainer" id="lives-container"></div>
+        <div class = "livesLabel">
+            <p>Digits: </p>
+            <p id="livesCount"></p>
+            <p id="goalLabel"></p>
+        </div>
+        <div class= "help-settings">
+            <img class = "settings-icon" src = "settings-icon.svg">
+        </div>
+
     </div>
     <div class="game-area">
 
@@ -17,7 +26,7 @@
         <span class="digit" style="--digit-increment: 4vw;"></span>
         <span class="digit" style="--digit-increment: 6vw;"></span>
         <span class="digit" style="--digit-increment: 8vw;">3.</span>
-        <input type="text" class="digitInput" id ="digitCurrent" maxlength="1">
+        <input type="text" class="digitInput" id ="digitCurrent" maxlength="1" autofocus>
         <span class="digit" style="--digit-increment: 8vw;"></span>
         <span class="digit" style="--digit-increment: 6vw;"></span>
         <span class="digit" style="--digit-increment: 4vw;">...</span>

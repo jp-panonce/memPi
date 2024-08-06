@@ -2,20 +2,61 @@ const pi = "14159265358979323846264338327950288419716939937510582097494459230781
 
 
 
-const gameMode = 0; //0 - learning, 1 - test
+const gameMode = 1; //0 - learning, 1 - test
 let currentIndex = 0;
 let lives = 3;
+const max_lives = 3;
+const goal = 100;
+const lives_container = document.getElementById('lives-container');const score_label = document.getElementById('livesCount');
+const goal_label = document.getElementById('goalLabel');
+const input_field = document.getElementById('digitCurrent')
 
 let predigitValues = ["","","","","3."];
-let postdigitValues = ["","","","",""];
+let postdigitValues = ["...","","","",""];
 
 // updateDisplayedDigits()
-window.onload = updateDisplayedDigits;
+window.onload = initialize_ui;
 
-document.getElementById('digitCurrent').addEventListener('input', checkDigit);
+input_field.addEventListener('input', checkDigit);
 
 function updateHearts(){
     
+    const livesElements = document.querySelectorAll(".life");
+    livesElements.forEach((life_img, index) => {
+        console.log(index)
+        if (index < lives) {
+            life_img.className = "life-alive life";
+        } else {
+            life_img.className = "life-dead life";
+        }
+        
+    });
+}
+
+function updateScore(){
+    score_label.innerHTML = (currentIndex + 1)
+    goal_label.innerHTML = "/" + goal
+}
+function initialize_ui(){
+    updateDisplayedDigits();
+    updateScore();
+
+    // set hearts elements
+    
+
+    for (let i = 1; i <= max_lives; i++){
+        const img = document.createElement('img');
+        img.src = 'heart.svg'; // Replace with your actual SVG filename
+        img.alt = 'SVG Image'; // Set an appropriate alt text
+        
+        if (i<= lives) {
+            img.className = "life-alive life";
+        } else {
+            img.className = "life-dead life"
+        }
+        lives_container.appendChild(img);
+    }
+
 }
 
 function updateDisplayedDigits(){
@@ -38,7 +79,10 @@ function updateDisplayedDigits(){
 }
 
 function checkDigit() {
-    setTimeout(function(){
+    // const caret = input_field.value.length;
+    // input_field.style.setProperty('--caret-position', caret);
+
+    // setTimeout(function(){
         const currentDigit_field = document.getElementById('digitCurrent');
     
         const input = document.getElementById('digitCurrent').value;
@@ -50,11 +94,13 @@ function checkDigit() {
             currentDigit_field.value = ""
             currentIndex++
         } else {
+            currentDigit_field.value = ""
             lives--;
         }
         updateDisplayedDigits()
-        updateHearts()
-    }, 100);
+        updateHearts();
+        updateScore();
+    // }, 50);
     
 }
 

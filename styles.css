@@ -16,21 +16,101 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* input {
-    font-size: 15vw;
-    text-align: center;
-    width: 15vw;
-} */
+
+::placeholder { /* Edge 12 -18 */
+    color: rgb(212, 212, 212);
+  }
 
 .digitInput {
     font-size: 15vw;
     border: none;
     text-align: center;
-    width: 10vw;
-    border-bottom: 3px solid #000; /* Set the bottom border */
+    width: 5vw;
+    /* border-bottom: 3px solid #000; */
     text-align: center; /* Center the digit horizontally */
     background-color: transparent;
     outline:none;
+    caret-color: transparent;
+
+}
+
+#digitCurrent {
+    caret-color: transparent; /* Hide the default caret */
+    position: relative;
+}
+
+/* #digitCurrent::after {
+    content: '_';
+    position: absolute;
+    right: 0;
+    animation: blink 1s step-end infinite;
+} */
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.livesContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 5px;
+    
+}
+
+.livesLabel {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    margin: 5px;
+    align-items: flex-end
+}
+
+.help-settings {
+    position: fixed;
+    top: 0px;
+    right: 0;
+    margin: 5px;
+    align-items: flex-end
+}
+
+.settings-icon {
+    width: 3em;
+    height:3em;
+}
+
+.livesLabel p{
+    display: inline-block;
+    text-align: center;
+    font-size:20px;
+}
+
+#livesCount {
+    font-size: 24px;
+}
+
+#goalLabel {
+    font-size: 20px;
+}
+
+.livesContainer img {
+    margin: 3px
+}
+
+.life-alive {
+    filter: invert(12%) sepia(100%) saturate(7450%) hue-rotate(340deg) brightness(95%) contrast(119%);
+}
+
+.life-dead {
+    filter: invert(75%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(96%) contrast(91%);
 }
 
 .digitInput:focus {
