@@ -8,14 +8,6 @@ body {
     margin: 0;
 }
 
-.container {
-    text-align: center;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
 
 ::placeholder { /* Edge 12 -18 */
     color: rgb(231, 231, 231);
@@ -213,6 +205,7 @@ body {
 
 .footer {
     /* background-color: #333; */
+    display:flex;
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -222,12 +215,16 @@ body {
     align-items: flex-end;
 }
 
-.footer-content {
+.footer-left {
     display: flex;
     align-items: center;
-    max-width: 1200px;
     margin: 0 auto;
     
+}
+
+.footer-right {
+    display: flex;
+    margin: 0 auto;
 }
 
 .footer a {
