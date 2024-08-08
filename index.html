@@ -15,8 +15,10 @@
             <p id="goalLabel"></p>
         </div>
         <img id="logo" src="logo.png">
+        
         <div class= "help-settings">
-            <img class = "settings-icon" src = "settings-icon.svg">
+            <button onclick="showHideHelp()"><img id = "help-icon" src = "help-icon.svg"></button>
+            <button onclick="showHideSettings()"><img id = "settings-icon" src = "settings-icon.svg"></button>
         </div>
 
     </div>
@@ -27,7 +29,7 @@
         <span class="digit" style="--digit-increment: 4vw;"></span>
         <span class="digit" style="--digit-increment: 6vw;"></span>
         <span class="digit" style="--digit-increment: 8vw;">3.</span>
-        <input type="text" class="digitInput" id ="digitCurrent" maxlength="1" placeholder="?" autofocus>
+        <input type="text" inputmode="numeric" class="digitInput" id ="digitCurrent" maxlength="1" placeholder="?" pattern="[0-9]" autofocus>
         <span class="digit postdigit" style="--digit-increment: 8vw;"></span>
         <span class="digit postdigit" style="--digit-increment: 6vw;"></span>
         <span class="digit postdigit" style="--digit-increment: 4vw;">...</span>
@@ -39,7 +41,7 @@
         <div class="footer-content">
             <a href="https://github.com/jp-panonce/memPi" target="_blank">
                 <i></i>
-                <div>github</div>
+                <div>contribute</div>
             </a>
             <a href="https://buymeacoffee.com/jpanonce">
                 <i></i>
@@ -49,28 +51,94 @@
                 <i></i>
                 <div>email</div>
             </a>
+            <a href="https://github.com/jp-panonce/memPi/issues">
+                <i></i>
+                <div>feedback</div>
+            </a>
         </div>
 
     </div>
 
 
     <!-- OVERLAYS -->
-    <div id = "game-over-overlay" class="overlay">
+    <div id = "setting-overlay" class="overlay">
         <div class="overlay-content">
-            <h1 style="color:#d31e1e; size:5vw">Game Over!!</h1>
-            <h3 id="game-over-message">You run out of lives</h3>
-            <p id="final_score-over">Digits:</p>
             
             <button onclick="restartGame()">Try Again</button>
         </div>
     </div>
+    <div id = "game-over-overlay" class="overlay">
+        <div class="overlay-content">
+            <h1 class = "game_done_overlay_main_heading" style="color:#d31e1e">Game Over!!</h1>
+            <h3 class = "game_done_message" id="game-over-message">You run out of lives</h3>
+
+            <div class="game_details">
+                <div class="result">
+                    <span class="game-result-attribute">Digits:</span>
+                    <span class="game-result-value" id="final_score-over">0</span>
+                </div>
+                
+            </div>
+            
+            
+            <button onclick="restartGame()">Try Again</button>
+        </div>
+    </div>
+    <!-- OVERLAY WHEN GAME DONE BUT NOT OVER -->
     <div id = "finished-overlay" class="overlay">
         <div class="overlay-content">
-            <h1 style="color:#1ed397; size:5vw">Amazing!!!</h1>
-            <h3 id="final_score-finished">Digits:</h3>
-            <h5 id="total_time-finished">Total Time:</h5>
-            <h5 id="mistakes-finished">Mistakes:</h5>
+            <h1 class = "game_done_overlay_main_heading" style="color:#1ed397">GOAL!!!</h1>
+            <h3 class = "game_done_message" >You are amazing</h3>
+
+            <div class="game_details">
+                <div class="result">
+                    <span class="game-result-attribute">Digits:</span>
+                    <span class="game-result-value" id="final_score-finished">0</span>
+                </div>
+                <div class="result">
+                    <span class="game-result-attribute">Time:</span>
+                    <span class="game-result-value" id="total_time-finished">0:00</span>
+                </div>
+                <div class="result">
+                    <span class="game-result-attribute">Mistakes:</span>
+                    <span class="game-result-value" id="mistakes-finished">0</span>
+                </div>
+            </div>
+            
             <button onclick="restartGame()">Try Again</button>
+        </div>
+    </div>
+
+    <!-- OVERLAY WHEN HELP BUTTON IS CLICKED -->
+    <div id = "help-overlay" class="overlay">
+        <div class="overlay-content">
+            <div id="set-learn-test"></div>
+        </div>
+    </div>
+    <!-- OVERLAY WHEN SETTING BUTTON IS CLICKED -->
+    <div id = "setting-overlay" class="overlay">
+        <div class="overlay-content">
+            <div id="set-learn-test"></div>
+            <div class = "setting-container" id="set-thinking-time">
+                <span class="setting-attribute">Time:</span>
+                <span class="setting-field" id="total_time-finished">0:00</span>
+                <span class="setting-unit" id="total_time-finished">0:00</span>
+            </div>
+            <div class = "setting-container" id="set-max-lives">
+                <span class="setting-attribute">Time:</span>
+                <span class="setting-field" id="total_time-finished">0:00</span>
+                <span class="setting-unit" id="total_time-finished">0:00</span>
+            </div>
+            <div class = "setting-container" id="set-goal">
+                <span class="setting-attribute">Time:</span>
+                <span class="setting-field" id="total_time-finished">0:00</span>
+                <span class="setting-unit" id="total_time-finished">0:00</span>
+            </div>
+            <div class = "setting-container" id="set-start">
+                <span class="setting-attribute">Time:</span>
+                <span class="setting-field" id="total_time-finished">0:00</span>
+                <span class="setting-unit" id="total_time-finished">0:00</span>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

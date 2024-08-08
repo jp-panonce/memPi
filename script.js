@@ -120,20 +120,18 @@ function checkDigit() {
     
 }
 
-
-
 function showGameOver() {
     document.getElementById('game-over-overlay').style.display = 'flex';
-    document.getElementById("final_score-over").innerHTML = "Digits: " + currentIndex
+    document.getElementById("final_score-over").innerHTML = currentIndex
     input_field.disabled = true;
     showingOverlay = true;
 }
 
 function showFinished() {
     document.getElementById('finished-overlay').style.display = 'flex';
-    document.getElementById("final_score-finished").innerHTML = "Digits: " + currentIndex;
-    document.getElementById("total_time-finished").innerHTML = "Total Time: 00:00";
-    document.getElementById("mistakes-finished").innerHTML = "Mistakes: " + (max_lives - lives);
+    document.getElementById("final_score-finished").innerHTML = currentIndex;
+    document.getElementById("total_time-finished").innerHTML = "00:00";
+    document.getElementById("mistakes-finished").innerHTML = (max_lives - lives);
     input_field.disabled = true;
     showingOverlay = true;
 }
@@ -146,4 +144,14 @@ function restartGame() {
     showingOverlay = false
     input_field.disabled = false;
     initialize_ui()
+}
+
+function showHideSettings(){
+    input_field.disabled = true;
+    console.log("eyyeyey");
+}
+
+function showHideHelp(){
+    input_field.disabled = true;
+    console.log("oiyoyoyoy");
 }
