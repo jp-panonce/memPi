@@ -44,6 +44,7 @@ function initialize_ui(){
     postdigitValues = ["...","","","",""];
     updateDisplayedDigits();
     updateScore();
+    updateHearts();
 
     const livesElements = document.querySelectorAll(".life");
     if (livesElements.length == 0) {
@@ -125,6 +126,7 @@ function showGameOver() {
     document.getElementById("final_score-over").innerHTML = currentIndex
     input_field.disabled = true;
     showingOverlay = true;
+    lives = max_lives
 }
 
 function showFinished() {
@@ -139,11 +141,11 @@ function showFinished() {
 function restartGame() {
     document.getElementById('game-over-overlay').style.display = 'none';
     document.getElementById('finished-overlay').style.display = 'none';
-    lives = max_lives
+    
     currentIndex = 0
     showingOverlay = false
     input_field.disabled = false;
-    initialize_ui()
+    initialize_ui();
 }
 
 function showHideSettings(){
