@@ -21,11 +21,28 @@ window.onload = initialize_ui;
 
 input_field.addEventListener('input', checkDigit);
 
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      // Your function here
+      restartGame();
+      showSnackbar('game-restarted-snackbar');
+    }
+    // input_field.value ="";
+  });
+
+
+function showSnackbar(snackbar_id) {
+    var snackbar = document.getElementById(snackbar_id);
+    snackbar.className = 'show';
+    setTimeout(function() {
+        snackbar.className = snackbar.className.replace('show', '');
+    }, 2000); // Snackbar will disappear after 3 seconds
+}
+
 function updateHearts(){
     const livesElements = document.querySelectorAll(".life");
     
     livesElements.forEach((life_img, index) => {
-        console.log(index)
         if (index < lives) {
             life_img.className = "life-alive life";
         } else {
@@ -45,6 +62,7 @@ function initialize_ui(){
     updateDisplayedDigits();
     updateScore();
     updateHearts();
+    
 
     const livesElements = document.querySelectorAll(".life");
     if (livesElements.length == 0) {
@@ -72,11 +90,9 @@ function updateDisplayedDigits(){
 
 
     if (!gameMode) {
-        console.log("ey")
         postdigitValues.forEach((postDigit, index) => {
             postdigitValues[index] = pi[currentIndex + index];
         });
-        console.log(postdigitValues)
     }
 
     const combinedValues = predigitValues.concat(postdigitValues)
@@ -88,14 +104,13 @@ function updateDisplayedDigits(){
 function checkDigit() {
     // const caret = input_field.value.length;
     // input_field.style.setProperty('--caret-position', caret);
-
+    console.log("checkDigit()")
     if (!showingOverlay) {
 
         
         const currentDigit_field = document.getElementById('digitCurrent');
         const input = document.getElementById('digitCurrent').value;
         
-        console.log(predigitValues)
         if (input === pi[currentIndex]) {
             predigitValues.shift();
             predigitValues.push(input);
@@ -146,6 +161,7 @@ function restartGame() {
     showingOverlay = false
     input_field.disabled = false;
     initialize_ui();
+    input_field.focus();
 }
 
 function showHideSettings(){
