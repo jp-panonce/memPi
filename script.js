@@ -12,6 +12,10 @@ const lives_container = document.getElementById('lives-container');const score_l
 const goal_label = document.getElementById('goalLabel');
 const input_field = document.getElementById('digitCurrent')
 
+// Get the modal
+var setting_modal = document.getElementById("settingModal");
+var setting_close = document.getElementsByClassName("close")[0];
+
 
 let predigitValues = [];
 let postdigitValues = [];
@@ -30,6 +34,10 @@ document.addEventListener('keydown', function(event) {
     // input_field.value ="";
   });
 
+setting_close.onclick = function() {
+    setting_modal.style.display = "none";
+}
+
 
 function showSnackbar(snackbar_id) {
     var snackbar = document.getElementById(snackbar_id);
@@ -38,6 +46,8 @@ function showSnackbar(snackbar_id) {
         snackbar.className = snackbar.className.replace('show', '');
     }, 2000); // Snackbar will disappear after 3 seconds
 }
+
+
 
 function updateHearts(){
     const livesElements = document.querySelectorAll(".life");
@@ -166,7 +176,10 @@ function restartGame() {
 
 function showHideSettings(){
     input_field.disabled = true;
-    console.log("eyyeyey");
+    console.log("eysdfh")
+
+    setting_modal.style.display = "block"
+    
 }
 
 function showHideHelp(){

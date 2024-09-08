@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemPi</title>
+    <link rel="icon" type="image/x-icon" href="./mempi_icon.png">
+
     <link rel="stylesheet" href="styles.css">
-</head>
+</head>    
 <body>
     <div class="header">
         <div class = "livesContainer" id="lives-container"></div>
@@ -18,7 +20,48 @@
         
         <div class= "help-settings">
             <button onclick="showHideHelp()"><img id = "help-icon" src = "help-icon.svg"></button>
+
+
             <button onclick="showHideSettings()"><img id = "settings-icon" src = "settings-icon.svg"></button>
+            <!-- MODAL WHEN SETTING BUTTON IS CLICKED -->
+            <div id="settingModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close" >&times;</span>
+                        <h2>Settings</h2>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <!-- Thinking Time -->
+                            <div>
+                                <label for="thinking_time">Thinking Time:</label>
+                                <input type="number" id="thinking_time" min="1" max="60">
+                            </div>
+                            
+                            <!-- Lives -->
+                            <div>
+                                <label for="max_lives">Max Lives:</label>
+                                <input type="text" id="max_lives" pattern="[1-6]">
+                            </div>
+
+                            <!-- Goals -->
+                            <div>
+                                <label for="goal">Goal:</label>
+                                <input type="number" id="goal" min="1">
+                            </div>
+
+                            <!-- Start at -->
+                            <div>
+                                <label for="start_at" >Start at:</label>
+                                <input type="number" id="start_at" min="1">
+                            </div>
+                            <input type="submit" value="Submit">
+                            <input type="reset">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -117,32 +160,10 @@
             <div id="set-learn-test"></div>
         </div>
     </div>
-    <!-- OVERLAY WHEN SETTING BUTTON IS CLICKED -->
-    <!-- <div id = "setting-overlay"></div>
-        <div class="setting-overlay-content">
-            <div id="set-learn-test"></div>
-            <div class = "setting-container" id="set-thinking-time">
-                <span class="setting-attribute">Thinking Time:</span>
-                <span class="setting-field" id="total_time-finished">0:00</span>
-                <span class="setting-unit" id="total_time-finished">0:00</span>
-            </div>
-            <div class = "setting-container" id="set-max-lives">
-                <span class="setting-attribute">Lives:</span>
-                <span class="setting-field" id="total_time-finished">0:00</span>
-                <span class="setting-unit" id="total_time-finished">0:00</span>
-            </div>
-            <div class = "setting-container" id="set-goal">
-                <span class="setting-attribute">Goal:</span>
-                <span class="setting-field" id="total_time-finished">0:00</span>
-                <span class="setting-unit" id="total_time-finished">0:00</span>
-            </div>
-            <div class = "setting-container" id="set-start">
-                <span class="setting-attribute">Start at:</span>
-                <span class="setting-field" id="total_time-finished">0:00</span>
-                <span class="setting-unit" id="total_time-finished">0:00</span>
-            </div>
-        </div>
-    </div> -->
+
+
+
+    
     <script src="script.js"></script>
 </body>
 </html>
